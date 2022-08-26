@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Problems = () => {
   const [userFormData, setUserFormData] = useState({
@@ -6,7 +6,7 @@ const Problems = () => {
     yvalue: " ",
     dvalue: " ",
   });
-  let [result, setResult] = useState("");
+  let [result, setResult] = useState(" ");
   const handleChangeFromData = (event) => {
     setUserFormData((prevState) => ({
       ...prevState,
@@ -18,21 +18,21 @@ const Problems = () => {
     if (
       isNaN(userFormData.xvalue) ||
       userFormData.xvalue < 0 ||
-      userFormData.xvalue == 0
+      userFormData.xvalue === 0
     ) {
       alert("Not Validate");
       return false;
     } else if (
       isNaN(userFormData.yvalue) ||
       userFormData.yvalue < 0 ||
-      userFormData.yvalue == 0
+      userFormData.yvalue === 0
     ) {
       alert("Not Validate");
       return false;
     } else if (
       isNaN(userFormData.dvalue) ||
       userFormData.dvalue < 0 ||
-      userFormData.dvalue == 0
+      userFormData.dvalue === 0
     ) {
       alert("Not Validate");
       return false;
@@ -42,6 +42,9 @@ const Problems = () => {
       (userFormData.yvalue - userFormData.xvalue) / userFormData.dvalue;
 
     let FinalJumpsResult = Math.round(Math.abs(Jumps));
+
+    setResult(FinalJumpsResult);
+    console.log(FinalJumpsResult);
   };
 
   return (
@@ -74,7 +77,7 @@ const Problems = () => {
           Submit
         </button>
       </form>
-      <p class="text"></p>
+      <p>{result}</p>
     </div>
   );
 };
