@@ -1,11 +1,13 @@
 // import Problems from "./Problems";
 
-import Signal from "./Signal";
+// import Signal from "./Signal";
+import Array from "./Array";
 function App() {
   return (
     <div>
       {/* <Problems /> */}
-      <Signal />
+      <Array />
+      {/* <Signal /> */}
     </div>
   );
 }
