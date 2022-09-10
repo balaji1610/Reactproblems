@@ -74,7 +74,30 @@ const ArrayList = () => {
     // updateMyArray(dataRetrive);
     // console.log(dataRetrive, "dataRetrive");
     const dataResult = myArray.filter((a, i) => i !== element);
+
+    console.log(dataResult, "dataResult");
     updateMyArray(dataResult);
+  };
+
+  const lastRemove = () => {
+    const lastIndex = [myArray.length - 1];
+
+    const ConverstString = lastIndex.toString();
+
+    const StringtoNumber = parseInt(ConverstString);
+    console.log(StringtoNumber, "lastIndex");
+
+    const deleteLastArray = myArray.filter((a, i) => i != StringtoNumber);
+
+    console.log(deleteLastArray, "deleteLastArray");
+    updateMyArray(deleteLastArray);
+  };
+
+  const removeAll = () => {
+    const Alldeletearray = myArray.splice();
+
+    console.log(Alldeletearray, "Alldeletearray");
+    updateMyArray(Alldeletearray);
   };
 
   return (
@@ -148,6 +171,9 @@ const ArrayList = () => {
             ))}
           </tbody>
         </table>
+        <button onClick={() => lastRemove()}>Last Remove</button>
+        &nbsp;&nbsp;&nbsp;
+        <button onClick={() => removeAll()}>Remove All</button>
       </div>
     </div>
   );
