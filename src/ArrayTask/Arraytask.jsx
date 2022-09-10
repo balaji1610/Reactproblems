@@ -7,12 +7,28 @@ const ArrayList = () => {
     list: " ",
   });
 
+  const [Editdata, setEditdata] = useState();
+  // console.log(Editdata, "Editdata");
+  const [inputfield, setInputfield] = useState(true);
+
+  const [CurrentIndex, setCurrentIndex] = useState();
+
+  // const [disableButton, setDisableButton] = useState(false);
+
   const handleChange = (event) => {
     setUserData((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
   };
+
+  const saveChange = (event) => {
+    setEditdata((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
   const [myArray, updateMyArray] = useState([]);
 
   const Addbuttonclick = () => {
@@ -25,20 +41,69 @@ const ArrayList = () => {
     console.log([myArray], "myarray");
   };
 
+  const handleEdit = (key) => {
+    // const CurrentIndex = key;
+    setCurrentIndex(key);
+    // console.log(CurrentIndex, "Currentindex");
+
+    const Editindex = myArray[CurrentIndex];
+    setEditdata(Editindex);
+    console.log(Editindex, "Editindex");
+    setInputfield((e) => !e);
+    // setDisableButton((e) => !e);
+  };
+
+  const saveButtonClick = () => {
+    console.log(CurrentIndex, "CurrentIndex saveButtonClick");
+    // let dataCurrent = myArray[CurrentIndex];
+
+    // console.log(dataCurrent, "dataCurrent");
+    myArray[CurrentIndex] = Editdata.editvalue;
+    console.log(Editdata.editvalue, "save");
+    // myArray.push(Editdata.editvalue);
+    setInputfield((e) => !e);
+    // setDisableButton((e) => !e);
+  };
+
   return (
     <div>
-      &nbsp; &nbsp; &nbsp; &nbsp;
-      <form>
-        <input
-          type="text"
-          name="list"
-          value={userdata.list}
-          onChange={handleChange}
-        />
-        &nbsp; &nbsp; &nbsp; &nbsp;
-        <input type="reset" value="Reset"></input>
-      </form>{" "}
-      <button onClick={Addbuttonclick}>Add</button>
+      {inputfield ? (
+        <div>
+          {" "}
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          <form>
+            <input
+              type="text"
+              name="list"
+              value={userdata.list}
+              onChange={handleChange}
+              required
+            />
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="reset" value="Reset"></input>
+          </form>{" "}
+          <button onClick={Addbuttonclick}>Add</button>{" "}
+        </div>
+      ) : (
+        <div>
+          {" "}
+          <section className="Edit">
+            <form>
+              <input
+                type="text"
+                name="editvalue"
+                defaultValue={Editdata}
+                onChange={saveChange}
+                required
+              />
+              &nbsp; &nbsp; &nbsp; &nbsp;
+              <input type="reset" value="Reset"></input>
+            </form>{" "}
+            <button onClick={saveButtonClick}>Save</button>
+          </section>
+        </div>
+      )}
+
       <div>
         <table>
           <thead>
@@ -55,7 +120,13 @@ const ArrayList = () => {
                 <td> {index + 1} </td>
                 <td> {items}</td>
                 <td>
-                  <button>Edit</button>
+                  {/* <button
+                    disabled={disableButton ? true : false}
+                    onClick={() => handleEdit(index)}
+                  >
+                    Edit
+                  </button> */}
+                  <button onClick={() => handleEdit(index)}>Edit</button>
                 </td>
 
                 <td>
