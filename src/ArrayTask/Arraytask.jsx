@@ -65,6 +65,18 @@ const ArrayList = () => {
     // setDisableButton((e) => !e);
   };
 
+  const handleDelete = (element) => {
+    console.log(element, "element");
+    const getData = myArray[element];
+    console.log(getData, "getData");
+
+    // var dataRetrive = myArray.splice(getData, 1);
+    // updateMyArray(dataRetrive);
+    // console.log(dataRetrive, "dataRetrive");
+    const dataResult = myArray.filter((a, i) => i !== element);
+    updateMyArray(dataResult);
+  };
+
   return (
     <div>
       {inputfield ? (
@@ -80,7 +92,7 @@ const ArrayList = () => {
               required
             />
             &nbsp; &nbsp; &nbsp; &nbsp;
-            <input type="reset" value="Reset"></input>
+            <input name="reset" type="reset" value="Reset" />
           </form>{" "}
           <button onClick={Addbuttonclick}>Add</button>{" "}
         </div>
@@ -130,7 +142,7 @@ const ArrayList = () => {
                 </td>
 
                 <td>
-                  <button>Delete</button>
+                  <button onClick={() => handleDelete(index)}>Delete</button>
                 </td>
               </tr>
             ))}
