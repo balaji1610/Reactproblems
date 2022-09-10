@@ -4,13 +4,16 @@
 
 // import Array from "./Array";
 
-import SignalTwosum from "./SignalTwosum";
+import ArrayList from "./ArrayTask/Arraytask";
+
+// import SignalTwosum from "./SignalTwosum";
 function App() {
   return (
     <div>
       {/* <Problems /> */}
       {/* <Array /> */}
-      <SignalTwosum />
+      {/* <SignalTwosum /> */}
+      <ArrayList />
       {/* <Signal /> */}
     </div>
   );
