@@ -7,13 +7,13 @@ const ArrayList = () => {
     list: " ",
   });
 
-  const [Editdata, setEditdata] = useState();
-  // console.log(Editdata, "Editdata");
+  const [editdata, setEditdata] = useState();
+  // console.log(editdata, "Editdata");
   const [inputfield, setInputfield] = useState(true);
 
-  const [CurrentIndex, setCurrentIndex] = useState();
+  const [currentIndex, setCurrentIndex] = useState();
 
-  // const [disableButton, setDisableButton] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
 
   const handleChange = (event) => {
     setUserData((prevState) => ({
@@ -41,28 +41,41 @@ const ArrayList = () => {
     console.log([myArray], "myarray");
   };
 
-  const handleEdit = (key) => {
-    // const CurrentIndex = key;
-    setCurrentIndex(key);
-    // console.log(CurrentIndex, "Currentindex");
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const handleEdit = async (key) => {
+    console.log("before");
 
-    const Editindex = myArray[CurrentIndex];
+    console.log(key, "KEY");
+    await delay(1000);
+
+    console.log("after");
+
+    const currenteditvalue = key;
+    setCurrentIndex(key);
+    // console.log(currentIndex, "currentIndex");
+
+    const Editindex = myArray[currenteditvalue];
     setEditdata(Editindex);
     console.log(Editindex, "Editindex");
     setInputfield((e) => !e);
-    // setDisableButton((e) => !e);
+    setDisableButton((e) => !e);
   };
 
   const saveButtonClick = () => {
-    console.log(CurrentIndex, "CurrentIndex saveButtonClick");
-    // let dataCurrent = myArray[CurrentIndex];
+    console.log(currentIndex, "currentIndex saveButtonClick");
+    // let dataCurrent = myArray[currentIndex];
 
     // console.log(dataCurrent, "dataCurrent");
-    myArray[CurrentIndex] = Editdata.editvalue;
-    console.log(Editdata.editvalue, "save");
-    // myArray.push(Editdata.editvalue);
+    myArray[currentIndex] = editdata.editvalue;
+    console.log(editdata.editvalue, "save");
+    // myArray.push(editdata.editvalue);
     setInputfield((e) => !e);
-    // setDisableButton((e) => !e);
+    setDisableButton((e) => !e);
+  };
+
+  const cancelButtonClick = () => {
+    setInputfield((e) => !e);
+    setDisableButton((e) => !e);
   };
 
   const handleDelete = (element) => {
@@ -127,14 +140,16 @@ const ArrayList = () => {
               <input
                 type="text"
                 name="editvalue"
-                defaultValue={Editdata}
+                defaultValue={editdata}
                 onChange={saveChange}
                 required
               />
               &nbsp; &nbsp; &nbsp; &nbsp;
               <input type="reset" value="Reset"></input>
             </form>{" "}
-            <button onClick={saveButtonClick}>Save</button>
+            <button onClick={saveButtonClick}>Save</button> &nbsp; &nbsp; &nbsp;
+            &nbsp;
+            <button onClick={cancelButtonClick}>Cancel</button>
           </section>
         </div>
       )}
@@ -155,13 +170,13 @@ const ArrayList = () => {
                 <td> {index + 1} </td>
                 <td> {items}</td>
                 <td>
-                  {/* <button
+                  <button
                     disabled={disableButton ? true : false}
                     onClick={() => handleEdit(index)}
                   >
                     Edit
-                  </button> */}
-                  <button onClick={() => handleEdit(index)}>Edit</button>
+                  </button>
+                  {/* <button onClick={() => handleEdit(index)}>Edit</button> */}
                 </td>
 
                 <td>
