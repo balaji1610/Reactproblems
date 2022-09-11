@@ -3,7 +3,7 @@
 // import Signal from "./Signal";
 
 // import Array from "./Array";
-
+import "../src/App.css";
 import ArrayList from "./ArrayTask/Arraytask";
 
 // import SignalTwosum from "./SignalTwosum";

@@ -35,7 +35,7 @@ const ArrayList = () => {
     if (userdata.list == " ") {
       return alert("NOT Validate");
     } else if (userdata.list.length >= 25) {
-      return alert("Maxima 25 Characters Only ");
+      return alert("Maxima 25 characters Only ");
     } else {
       setUserData(() => " ");
 
