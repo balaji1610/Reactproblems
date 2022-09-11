@@ -32,13 +32,19 @@ const ArrayList = () => {
   const [myArray, updateMyArray] = useState([]);
 
   const Addbuttonclick = () => {
-    setUserData(() => " ");
+    if (userdata.list == " ") {
+      return alert("NOT Validate");
+    } else if (userdata.list.length >= 25) {
+      return alert("Maxima 25 Characters Only ");
+    } else {
+      setUserData(() => " ");
 
-    myArray.push(userdata.list);
+      myArray.push(userdata.list);
 
-    console.log(userdata.list);
+      console.log(userdata.list);
 
-    console.log([myArray], "myarray");
+      console.log([myArray], "myarray");
+    }
   };
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
