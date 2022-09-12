@@ -6,17 +6,24 @@
 import "../src/App.css";
 // import ArrayList from "./ArrayTask/Arraytask";
 
-import InfinityLoop from "./InfinityLoop/InfinityLoop";
+// import InfinityLoop from "./InfinityLoop/InfinityLoop";
 // import SignalTwosum from "./SignalTwosum";
+
+import Modify from "./ModifyArrayTask/ModifyArrayTask";
+
+import ObjectMethod from "./ObjectMethods/ObjectMethods";
 function App() {
   return (
     <div>
       {/* <Problems /> */}
       {/* <Array /> */}
       {/* <SignalTwosum /> */}
-      <InfinityLoop />
+      {/* <Modify /> */}
+      {/* <InfinityLoop /> */}
       {/* <ArrayList /> */}
       {/* <Signal /> */}
+
+      <ObjectMethod />
     </div>
   );
 }
