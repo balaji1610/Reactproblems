@@ -4,8 +4,9 @@
 
 // import Array from "./Array";
 import "../src/App.css";
-import ArrayList from "./ArrayTask/Arraytask";
+// import ArrayList from "./ArrayTask/Arraytask";
 
+import InfinityLoop from "./InfinityLoop/InfinityLoop";
 // import SignalTwosum from "./SignalTwosum";
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       {/* <Problems /> */}
       {/* <Array /> */}
       {/* <SignalTwosum /> */}
-      <ArrayList />
+      <InfinityLoop />
+      {/* <ArrayList /> */}
       {/* <Signal /> */}
     </div>
   );
